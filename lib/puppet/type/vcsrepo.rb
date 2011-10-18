@@ -108,6 +108,14 @@ Puppet::Type.newtype(:vcsrepo) do
   newproperty(:revision) do
     desc "The revision of the repository"
     newvalue(/^\S+$/)
+    defaultto do
+      case resource[:provider]
+      when 'git'
+        'HEAD'
+      else
+        nil
+      end
+    end
   end
 
   newparam(:owner) do
