@@ -5,8 +5,6 @@ Puppet::Type.type(:vcsrepo).provide(:svn, :parent => Puppet::Provider::Vcsrepo) 
 
   commands :svn      => 'svn',
            :svnadmin => 'svnadmin'
-
-  defaultfor :svn => :exists
   has_features :filesystem_types, :reference_tracking, :basic_auth
 
   def create

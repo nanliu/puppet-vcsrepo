@@ -3,10 +3,9 @@ require File.join(File.dirname(__FILE__), '..', 'vcsrepo')
 Puppet::Type.type(:vcsrepo).provide(:cvs, :parent => Puppet::Provider::Vcsrepo) do
   desc "Supports CVS repositories/workspaces"
 
-  commands   :cvs => 'cvs'
-  defaultfor :cvs => :exists
+  commands :cvs => 'cvs'
   has_features :gzip_compression, :reference_tracking
-  
+
   def create
     if !@resource.value(:source)
       create_repository(@resource.value(:path))
